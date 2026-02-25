@@ -1,24 +1,212 @@
-:root { color-scheme: light dark; }
-body { margin: 0; font-family: Arial, sans-serif; }
-body.dark { background: #0b0f14; color: #e8edf3; }
-body.light { background: #f2f4f7; color: #111; }
+/* ============================
+   D&D Randomizer - index.css
+   Dark/Light + Gradients
+============================ */
 
-.wrap { max-width: 680px; margin: 0 auto; padding: 24px; }
-.card { border-radius: 16px; padding: 16px; background: rgba(255,255,255,0.06); }
+/* Theme variables */
+:root {
+  --bg: #0b0f14;
+  --text: #e8edf3;
 
-body.light .card { background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+  --card: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.14);
 
-.row { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
-.row.tiny { align-items: center; justify-content: space-between; }
+  --primary: rgba(255, 255, 255, 0.14);
+  --primaryText: var(--text);
 
-select, button { font-size: 1rem; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.18); background: transparent; color: inherit; }
-body.light select, body.light button { border-color: rgba(0,0,0,0.12); }
+  --accent: #6d5efc;  /* violet/blue */
+  --accent2: #2b6cff; /* blue */
+}
 
-.primary { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.22); font-weight: 700; }
-body.light .primary { background: #111; color: #fff; border-color: #111; }
+body.light {
+  --bg: #f5f7ff;
+  --text: #0f172a;
 
-.secondary { opacity: 0.9; }
-.big { flex: 1; padding: 14px 14px; font-size: 1.1rem; }
-.chip { padding: 8px 12px; border-radius: 999px; }
+  --card: #ffffff;
+  --border: rgba(15, 23, 42, 0.12);
 
-dialog { border: none; border-radius: 16px; padding: 16px; max-width: 520px; width: calc(100% - 32px); }
+  --primary: #0f172a;
+  --primaryText: #ffffff;
+
+  --accent: #7c86ff;  /* pastel violet */
+  --accent2: #7bc7ff; /* pastel blue */
+}
+
+/* Base */
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+
+  min-height: 100svh; /* moderno y correcto */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body.dark {
+  background:
+    radial-gradient(900px 600px at 15% 10%, rgba(109, 94, 252, 0.18), transparent 60%),
+    radial-gradient(900px 600px at 85% 25%, rgba(43, 108, 255, 0.14), transparent 60%),
+    var(--bg);
+}
+
+body.light {
+  background:
+    radial-gradient(900px 600px at 15% 10%, rgba(124, 134, 255, 0.18), transparent 60%),
+    radial-gradient(900px 600px at 85% 25%, rgba(123, 199, 255, 0.16), transparent 60%),
+    var(--bg);
+}
+
+/* Layout */
+.wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.brand {
+  margin: 0 0 14px;
+  font-size: 1.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* Card */
+.card {
+  border-radius: 16px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--border);
+    max-width: 440px;
+    margin: 0 auto;;
+  }
+
+body.light .card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Rows */
+.row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.row + .row {
+  margin-top: 22px; /* separación estándar entre filas */
+}
+
+.row.tiny {
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+/* Controls */
+button, select {
+  font-size: 1rem;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+}
+
+.primary {
+  background: var(--primary);
+  color: var(--primaryText);
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.secondary { opacity: 0.92; }
+
+.big {
+  flex: 1;
+  padding: 14px;
+  font-size: 1.1rem;
+}
+
+.primary.big {
+  height: 65px;
+  max-width: none; /* deja que flex mande */
+}
+/* Chips */
+.chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+
+.chip.active {
+  border-color: rgba(109, 94, 252, 0.65);
+  box-shadow: 0 0 0 3px rgba(109, 94, 252, 0.14);
+}
+
+.lang-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.lang-buttons.small .chip {
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+.chip.icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  padding: 0;
+}
+
+/* Dialog */
+dialog {
+  border: none;
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 520px;
+  width: calc(100% - 32px);
+}
+
+
+/* ============================
+   Mode (Estándar / Avanzado)
+============================ */
+
+.mode legend {
+  margin-bottom: 1px;
+  font-weight: 500;
+}
+
+/* Espacio entre opciones */
+.mode .radio {
+ display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;  /* separación vertical entre radios */
+  padding-left: 8px;    /* separa del borde izquierdo */
+    padding-right: 8px;
+}
+
+/* Opcional: más espacio antes de los botones */
+.mode + .row {
+  margin-top: 24px;
+}
+.mode {
+  margin-top: 6px;
+  padding: 6px 14px 8px 8px;
+
+  display: inline-flex;     /* clave */
+  align-items: center;
+  gap: 18px;
+
+  width: auto;              /* que no ocupe todo */
+}
+

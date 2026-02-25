@@ -24,8 +24,11 @@ function render() {
   // Textos UI
   el("btnInstructions").textContent = t(lang, "btnInstructions");
   el("btnGo").textContent = t(lang, "goToGame");
-  el("themeLabel").textContent = t(lang, "themeLabel");
-  el("btnTheme").textContent = theme === "dark" ? t(lang, "dark") : t(lang, "light");
+el("btnTheme").textContent = theme === "dark" ? "🌙" : "☀️";
+el("btnTheme").setAttribute(
+  "aria-label",
+  theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro"
+);
 
   el("modeLegend").textContent = t(lang, "modeLegend");
   el("modeSimpleText").textContent = t(lang, "modeSimple");
