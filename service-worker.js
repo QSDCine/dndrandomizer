@@ -1,4 +1,4 @@
-const CACHE = "dnd-randomizer-v3";
+const CACHE = "dnd-randomizer-v4";
 const ASSETS = [
   "./",
   "./index.html",
@@ -16,10 +16,12 @@ const ASSETS = [
 ];
 
 self.addEventListener("install", (e) => {
+  self.skipWaiting();
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)));
 });
 
 self.addEventListener("activate", (e) => {
+  self.clients.claim();
   e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
@@ -29,6 +31,13 @@ self.addEventListener("activate", (e) => {
 
 self.addEventListener("fetch", (e) => {
   e.respondWith(
-    caches.match(e.request).then((r) => r || fetch(e.request))
+    caches.match(e.request).then((cached) => {
+      if (cached) return cached;
+
+      return fetch(e.request).catch(() => {
+        // Si falla la red y no está cacheado, devuelve index
+        return caches.match("./index.html");
+      });
+    })
   );
 });
