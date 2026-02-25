@@ -6,11 +6,11 @@ import {
 } from "./storage.js";
 import { t } from "./i18n.js";
 
-const $ = (id) => document.getElementById(id);
+const el = (id) => document.getElementById(id);
 
 function setActiveLangButton(lang) {
-  $("btnLangEs").classList.toggle("active", lang === "es");
-  $("btnLangEn").classList.toggle("active", lang === "en");
+  el("btnLangEs").classList.toggle("active", lang === "es");
+  el("btnLangEn").classList.toggle("active", lang === "en");
 }
 
 function render() {
@@ -22,32 +22,32 @@ function render() {
   applyThemeToBody();
 
   // Textos UI
-  $("btnInstructions").textContent = t(lang, "btnInstructions");
-  $("btnGo").textContent = t(lang, "goToGame");
-  $("themeLabel").textContent = t(lang, "themeLabel");
-  $("btnTheme").textContent = theme === "dark" ? t(lang, "dark") : t(lang, "light");
+  el("btnInstructions").textContent = t(lang, "btnInstructions");
+  el("btnGo").textContent = t(lang, "goToGame");
+  el("themeLabel").textContent = t(lang, "themeLabel");
+  el("btnTheme").textContent = theme === "dark" ? t(lang, "dark") : t(lang, "light");
 
-  $("modeLegend").textContent = t(lang, "modeLegend");
-  $("modeSimpleText").textContent = t(lang, "modeSimple");
-  $("modeFullText").textContent = t(lang, "modeFull");
+  el("modeLegend").textContent = t(lang, "modeLegend");
+  el("modeSimpleText").textContent = t(lang, "modeSimple");
+  el("modeFullText").textContent = t(lang, "modeFull");
 
   // Estado seleccionado
-  $("modeSimple").checked = mode === "simple";
-  $("modeFull").checked = mode === "full";
+  el("modeSimple").checked = mode === "simple";
+  el("modeFull").checked = mode === "full";
 
   setActiveLangButton(lang);
 
   // Dialog
-  $("insTitle").textContent = t(lang, "instructionsTitle");
-  $("insBody").textContent = t(lang, "instructionsBody");
+  el("insTitle").textContent = t(lang, "instructionsTitle");
+  el("insBody").textContent = t(lang, "instructionsBody");
 }
 
-$("btnLangEs").addEventListener("click", () => {
+el("btnLangEs").addEventListener("click", () => {
   setLang("es");
   render();
 });
 
-$("btnLangEn").addEventListener("click", () => {
+el("btnLangEn").addEventListener("click", () => {
   setLang("en");
   render();
 });
@@ -60,15 +60,15 @@ document.querySelectorAll('input[name="mode"]').forEach((input) => {
   });
 });
 
-$("btnTheme").addEventListener("click", () => {
+el("btnTheme").addEventListener("click", () => {
   const next = getTheme() === "dark" ? "light" : "dark";
   setTheme(next);
   render();
 });
 
-$("btnInstructions").addEventListener("click", () => $("dlg").showModal());
+el("btnInstructions").addEventListener("click", () => el("dlg").showModal());
 
-$("btnGo").addEventListener("click", () => {
+el("btnGo").addEventListener("click", () => {
   window.location.href = "game.html";
 });
 

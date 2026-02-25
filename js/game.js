@@ -2,7 +2,7 @@ import { getLang, getMode, applyThemeToBody } from "./storage.js";
 import { t } from "./i18n.js";
 import { DATA, SECTIONS } from "./data.js";
 
-const $ = (id) => document.getElementById(id);
+const el = (id) => document.getElementById(id);
 
 const OMIT_IN_SIMPLE = new Set(["traits", "ideals", "bonds", "flaws"]);
 let lastCopyText = "";
@@ -62,11 +62,11 @@ function renderUI() {
   document.documentElement.lang = lang;
   applyThemeToBody();
 
-  $("title").textContent = t(lang, "titleGame");
-  $("btnBack").textContent = t(lang, "btnBack");
-  $("btnGenerate").textContent = t(lang, "btnReroll");
-  $("btnCopy").textContent = t(lang, "btnCopy");
-  $("resultTitle").textContent = t(lang, "resultTitle");
+  el("title").textContent = t(lang, "titleGame");
+  el("btnBack").textContent = t(lang, "btnBack");
+  el("btnGenerate").textContent = t(lang, "btnReroll");
+  el("btnCopy").textContent = t(lang, "btnCopy");
+  el("resultTitle").textContent = t(lang, "resultTitle");
 }
 
 function renderResult(res) {
@@ -74,7 +74,7 @@ function renderResult(res) {
   const activeSections = getActiveSections();
 
   const lines = [];
-  const resultsEl = $("results");
+  const resultsEl = el("results");
   resultsEl.innerHTML = "";
 
   for (const s of activeSections) {
@@ -89,7 +89,7 @@ function renderResult(res) {
     resultsEl.appendChild(row);
   }
 
-  $("allBox").innerHTML = lines.map(l => `<div>${escapeHtml(l)}</div>`).join("");
+  el("allBox").innerHTML = lines.map(l => `<div>${escapeHtml(l)}</div>`).join("");
   lastCopyText = lines.join("\n");
 }
 
@@ -98,10 +98,10 @@ function generate() {
   renderResult(res);
 }
 
-$("btnBack").addEventListener("click", () => (window.location.href = "index.html"));
-$("btnGenerate").addEventListener("click", generate);
+el("btnBack").addEventListener("click", () => (window.location.href = "index.html"));
+el("btnGenerate").addEventListener("click", generate);
 
-$("btnCopy").addEventListener("click", async () => {
+el("btnCopy").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(lastCopyText || "");
   } catch {
