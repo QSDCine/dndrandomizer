@@ -11,7 +11,7 @@ export const I18N = {
     instructionsTitle: "Instrucciones",
     instructionsBody:
       "Elige idioma y tema. Pulsa GENERAR para crear un personaje aleatorio por secciones.",
-    titleGame: "Generador",
+    titleGame: "D&D Randomizer",
     btnBack: "Volver",
     btnReroll: "Generar",
     btnCopy: "Copiar todo",
@@ -32,7 +32,7 @@ modeFull: "Avanzado",
     instructionsTitle: "Instructions",
     instructionsBody:
       "Choose language and theme. Press GENERATE to create a random character by sections.",
-    titleGame: "Generator",
+    titleGame: "D&D Randomizer",
     btnBack: "Back",
     btnReroll: "Generate",
     btnCopy: "Copy all",
