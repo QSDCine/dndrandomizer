@@ -1,0 +1,33 @@
+:root { color-scheme: light dark; }
+body { margin: 0; font-family: Arial, sans-serif; }
+body.dark { background: #0b0f14; color: #e8edf3; }
+body.light { background: #f2f4f7; color: #111; }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 24px; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.card { border-radius: 16px; padding: 16px; background: rgba(255,255,255,0.06); }
+body.light .card { background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+.row { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+button { font-size: 1rem; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.18); background: transparent; color: inherit; }
+body.light button { border-color: rgba(0,0,0,0.12); }
+
+.primary { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.22); font-weight: 700; }
+body.light .primary { background: #111; color: #fff; border-color: #111; }
+.big { flex: 1; padding: 14px 14px; font-size: 1.1rem; }
+
+.results { margin-top: 12px; display: grid; gap: 10px; }
+.result-row { padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); }
+body.light .result-row { border-color: rgba(0,0,0,0.10); }
+
+.alltext { width: 100%; margin-top: 12px; min-height: 140px; border-radius: 12px; padding: 12px; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: inherit; resize: vertical; }
+body.light .alltext { border-color: rgba(0,0,0,0.10); }
+
+.allbox {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+body.light .allbox { border-color: rgba(0,0,0,0.10); }
+.allbox > div { padding: 4px 0; }

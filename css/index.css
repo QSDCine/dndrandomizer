@@ -1,0 +1,24 @@
+:root { color-scheme: light dark; }
+body { margin: 0; font-family: Arial, sans-serif; }
+body.dark { background: #0b0f14; color: #e8edf3; }
+body.light { background: #f2f4f7; color: #111; }
+
+.wrap { max-width: 680px; margin: 0 auto; padding: 24px; }
+.card { border-radius: 16px; padding: 16px; background: rgba(255,255,255,0.06); }
+
+body.light .card { background: #fff; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+.row { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+.row.tiny { align-items: center; justify-content: space-between; }
+
+select, button { font-size: 1rem; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.18); background: transparent; color: inherit; }
+body.light select, body.light button { border-color: rgba(0,0,0,0.12); }
+
+.primary { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.22); font-weight: 700; }
+body.light .primary { background: #111; color: #fff; border-color: #111; }
+
+.secondary { opacity: 0.9; }
+.big { flex: 1; padding: 14px 14px; font-size: 1.1rem; }
+.chip { padding: 8px 12px; border-radius: 999px; }
+
+dialog { border: none; border-radius: 16px; padding: 16px; max-width: 520px; width: calc(100% - 32px); }
