@@ -197,3 +197,33 @@ body.light .allbox {
   .top h1 { font-size: 1.35rem; }
   .primary.big { height: 60px; }
 }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  background: linear-gradient(135deg, #6d5efc, #2b6cff);
+  color: white;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.results {
+padding: 8px;
+padding-top: 14px;
+}

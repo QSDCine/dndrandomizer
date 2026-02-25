@@ -198,9 +198,20 @@ async function rollAnimation() {
 el("btnBack").addEventListener("click", () => (window.location.href = "index.html"));
 el("btnGenerate").addEventListener("click", rollAnimation);
 
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1000);
+}
+
 el("btnCopy").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(lastCopyText || "");
+    showToast(getLang() === "en" ? "Copied!" : "¡Copiado!");
   } catch {
     const ta = document.createElement("textarea");
     ta.value = lastCopyText || "";
@@ -208,6 +219,7 @@ el("btnCopy").addEventListener("click", async () => {
     ta.select();
     document.execCommand("copy");
     ta.remove();
+    showToast(getLang() === "en" ? "Copied!" : "¡Copiado!");
   }
 });
 
