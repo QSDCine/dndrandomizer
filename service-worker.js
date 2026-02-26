@@ -1,4 +1,4 @@
-const CACHE = "dnd-randomizer-v10";
+const CACHE = "dnd-randomizer-v11";
 
 const ASSETS = [
   "./",
@@ -34,12 +34,14 @@ const ASSETS = [
 
 self.addEventListener("install", (e) => {
   self.skipWaiting();
+
+  // Dedup: convierte todo a URL absoluta y elimina duplicados
+  const unique = Array.from(
+    new Set(ASSETS.map((p) => new URL(p, self.location.href).href))
+  ).map((href) => new Request(href, { cache: "reload" }));
+
   e.waitUntil(
-    caches.open(CACHE).then((c) =>
-      c.addAll(
-        ASSETS.map((url) => new Request(url, { cache: "reload" }))
-      )
-    )
+    caches.open(CACHE).then((c) => c.addAll(unique))
   );
 });
 
