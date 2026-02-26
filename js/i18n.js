@@ -10,7 +10,7 @@ export const I18N = {
     goToGame: "Generar",
     instructionsTitle: "Instrucciones",
     instructionsBody:
-      "Pulsa GENERAR para crear un personaje aleatorio. El modo ESTÁNDAR genera clase, subclase, trasfondo/origen y raza/especie. El modo AVANZADO genera además rasgos de personalidad, ideales, vínculos y defectos.",
+      "Pulsa GENERAR para crear un personaje aleatorio. \n El modo ESTÁNDAR genera clase, subclase, trasfondo/origen y raza/especie. \n El modo AVANZADO genera además rasgos de personalidad, ideales, vínculos y defectos.",
     titleGame: "D&D Randomizer",
     btnBack: "Volver",
     btnReroll: "Generar",
@@ -31,7 +31,7 @@ modeFull: "Avanzado",
     goToGame: "Generate",
     instructionsTitle: "Instructions",
     instructionsBody:
-      "Press GENERATE to create a random character. STANDARD mode generates class, subclass, background/origin and race/species. ADVANCED mode also generates personality traits, ideals, bonds and flaws.",
+      "Press GENERATE to create a random character. \n STANDARD mode generates class, subclass, background/origin and race/species. \n ADVANCED mode also generates personality traits, ideals, bonds and flaws.",
     titleGame: "D&D Randomizer",
     btnBack: "Back",
     btnReroll: "Generate",
