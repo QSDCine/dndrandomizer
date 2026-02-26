@@ -1,4 +1,4 @@
-const CACHE = "dnd-randomizer-v11";
+const CACHE = "dnd-randomizer-v17";
 
 const ASSETS = [
   "./",
