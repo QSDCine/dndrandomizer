@@ -73,7 +73,7 @@ export const DATA = {
       artificer: ["Alchemist", "Armorer", "Artillerist", "Battle Smith"]
     },
 
-    origin: ["Soldier", "Sage", "Outlander", "Noble", "Charlatan"],
+    origin: ["Acolyte", "Entertainer", "Gladiator", "Guild Artisan", "Guild Merchant", "Charlatan", "Criminal", "Spy", "Hermit", "Sage", "Folk Hero", "Urchin", "Sailor", "Pirate", "Noble", "Knight", "Outlander", "Soldier", "Farmer", "Scribe", "Guard", "Guide", "Wayfarer", "Haunted One", "Investigator", "Ashari", "Clasp Agent", "Lyceum Scholar", "Reformed Cultist", "Whitestone Rifle Corps", "Grinner", "Volstrucker Agent", "Cartomancer", "Rewarded", "Ruined"],
     species: ["Human", "Elf", "Dwarf", "Halfling", "Tiefling"],
     traits: ["Uses humor as a shield", "Quiet observer", "Blunt honesty"],
     ideals: ["Justice", "Freedom", "Tradition"],
