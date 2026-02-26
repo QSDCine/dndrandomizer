@@ -31,7 +31,7 @@ modeFull: "Avanzado",
     goToGame: "Generate",
     instructionsTitle: "Instructions",
     instructionsBody:
-      "Press GENERATE to create a random character. STANDARD mode generates class, subclass, background/origin and race/species. The ADVANCED mode also generates personality traits, ideals, bonds and flaws.",
+      "Press GENERATE to create a random character. STANDARD mode generates class, subclass, background/origin and race/species. ADVANCED mode also generates personality traits, ideals, bonds and flaws.",
     titleGame: "D&D Randomizer",
     btnBack: "Back",
     btnReroll: "Generate",
