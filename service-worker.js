@@ -1,4 +1,4 @@
-const CACHE = "dnd-randomizer-v17";
+const CACHE = "dnd-randomizer-v19";
 
 const ASSETS = [
   "./",
@@ -16,6 +16,9 @@ const ASSETS = [
   "./manifest.json",
   "./icon-192.png",
   "./icon-512.png",
+  "./lists.html",
+"./css/lists.css",
+"./js/lists.js",
 
   // Variantes sin "./"
   "index.html",
@@ -30,6 +33,9 @@ const ASSETS = [
   "manifest.json",
   "icon-192.png",
   "icon-512.png",
+  "lists.html",
+"css/lists.css",
+"js/lists.js",
 ];
 
 self.addEventListener("install", (e) => {
