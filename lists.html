@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D&amp;D Randomizer</title>
+
+  <link rel="stylesheet" href="css/lists.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png" />
+</head>
+
+<body class="dark">
+  <main class="wrap">
+
+    <section class="card header-card">
+      <header class="top">
+        <h1 id="title"></h1>
+        <button id="btnBack" class="secondary"></button>
+      </header>
+    </section>
+
+    <section class="card">
+      <div class="accordions">
+
+        <!-- IMPORTANTE: SIN "open" para que empiece cerrada -->
+        <details>
+          <summary id="secClasses"></summary>
+          <ul id="listClasses" class="list"></ul>
+        </details>
+
+        <details>
+          <summary id="secSubclasses"></summary>
+
+          <div class="subclassBox">
+            <label class="lbl" id="lblChooseClass" for="selectClass"></label>
+            <select id="selectClass" class="select"></select>
+          </div>
+
+          <ul id="listSubclasses" class="list"></ul>
+        </details>
+
+        <details>
+          <summary id="secOrigins"></summary>
+          <ul id="listOrigins" class="list"></ul>
+        </details>
+
+        <details>
+          <summary id="secSpecies"></summary>
+          <ul id="listSpecies" class="list"></ul>
+        </details>
+
+        <details>
+          <summary id="secTraits"></summary>
+          <ul id="listTraits" class="list"></ul>
+        </details>
+
+        <details>
+          <summary id="secIdeals"></summary>
+          <ul id="listIdeals" class="list"></ul>
+        </details>
+
+        <details>
+          <summary id="secBonds"></summary>
+          <ul id="listBonds" class="list"></ul>
+        </details>
+
+        <details>
+          <summary id="secFlaws"></summary>
+          <ul id="listFlaws" class="list"></ul>
+        </details>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="js/lists.js"></script>
+</body>
+</html>
