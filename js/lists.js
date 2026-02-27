@@ -17,6 +17,13 @@ function fillUl(ulId, items) {
 function renderSubclasses(lang) {
   const data = DATA[lang];
   const classId = el("selectClass").value;
+
+  // Si no hay clase seleccionada, no mostramos nada
+  if (!classId) {
+    fillUl("listSubclasses", []);
+    return;
+  }
+
   const subclasses = data.subclassesByClass?.[classId] || [];
   fillUl("listSubclasses", subclasses);
 }
@@ -47,11 +54,17 @@ function render() {
   const classes = data.classes || [];
   fillUl("listClasses", classes.map(c => c.name));
 
-  // Select for subclasses
+  // Select for subclasses (UI-only placeholder)
   const select = el("selectClass");
-  const prev = localStorage.getItem("listsClassId");
-
   select.innerHTML = "";
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = t(lang, "chooseClass"); // "Elige una clase" / "Choose a class"
+  placeholder.selected = true;
+  placeholder.disabled = true; // opcional: evita que lo “elijan” una vez cambiaron
+  select.appendChild(placeholder);
+
   for (const c of classes) {
     const opt = document.createElement("option");
     opt.value = c.id;
@@ -59,9 +72,7 @@ function render() {
     select.appendChild(opt);
   }
 
-  if (prev && classes.some(c => c.id === prev)) select.value = prev;
-  else if (classes.length) select.value = classes[0].id;
-
+  // Importante: al entrar, no mostramos subclases hasta elegir clase
   renderSubclasses(lang);
 
   // Other lists
@@ -77,12 +88,13 @@ el("btnBack").addEventListener("click", () => {
   window.location.href = "index.html";
 });
 
-el("selectClass").addEventListener("change", (e) => {
-  localStorage.setItem("listsClassId", e.target.value);
+el("selectClass").addEventListener("change", () => {
   renderSubclasses(getLang());
 });
 
 render();
+
+window.addEventListener("pageshow", () => render());
 
 // SW register (igual que index)
 if ("serviceWorker" in navigator) {
