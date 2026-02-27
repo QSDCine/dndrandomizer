@@ -29,6 +29,7 @@ el("btnTheme").setAttribute(
   "aria-label",
   theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro"
 );
+el("btnLists").textContent = t(lang, "btnLists");
 
   el("modeLegend").textContent = t(lang, "modeLegend");
   el("modeSimpleText").textContent = t(lang, "modeSimple");
@@ -48,6 +49,10 @@ el("btnTheme").setAttribute(
 el("btnLangEs").addEventListener("click", () => {
   setLang("es");
   render();
+});
+
+el("btnLists").addEventListener("click", () => {
+  window.location.href = "lists.html";
 });
 
 el("btnLangEn").addEventListener("click", () => {
@@ -77,7 +82,7 @@ el("btnGo").addEventListener("click", () => {
 
 render();
 
-// SW register (si quieres solo aquí)
+// SW register 
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js");
 }
