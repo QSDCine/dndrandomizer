@@ -1,4 +1,4 @@
-const CACHE = "dnd-randomizer-v24";
+const CACHE = "dnd-randomizer-v26";
 
 const ASSETS = [
   "./",
@@ -20,7 +20,7 @@ const ASSETS = [
 "./css/lists.css",
 "./js/lists.js",
 
-  // Variantes sin "./"
+
   "index.html",
   "game.html",
   "css/index.css",
@@ -41,7 +41,6 @@ const ASSETS = [
 self.addEventListener("install", (e) => {
   self.skipWaiting();
 
-  // Dedup: convierte todo a URL absoluta y elimina duplicados
   const unique = Array.from(
     new Set(ASSETS.map((p) => new URL(p, self.location.href).href))
   ).map((href) => new Request(href, { cache: "reload" }));
@@ -63,7 +62,7 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   const req = e.request;
 
-  // 1) Navegación (abrir index/game, refresh, etc.): app-shell offline
+
   if (req.mode === "navigate") {
     e.respondWith(
       fetch(req).catch(() => caches.match("./index.html"))
@@ -71,19 +70,19 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
-  // 2) Assets (JS/CSS/imagenes): cache-first, network fallback
+
   e.respondWith(
     caches.match(req).then((cached) => {
       if (cached) return cached;
       return fetch(req)
         .then((res) => {
-          // Opcional: cachea cosas nuevas si vienen bien
+   
           const copy = res.clone();
           caches.open(CACHE).then((c) => c.put(req, copy));
           return res;
         })
         .catch(() => {
-          // Sin red y no cacheado: devuelve un 404 en vez de index.html (evita romper JS)
+
           return new Response("", { status: 404, statusText: "Offline" });
         });
     })
