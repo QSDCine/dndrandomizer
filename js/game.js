@@ -11,14 +11,14 @@ function pick(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-let lastSignature = ""; // para evitar repetición inmediata
+let lastSignature = ""; 
 
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
 function signatureFor(res) {
-  // Lo mínimo “identidad” del PJ para evitar repetición inmediata:
+
   return `${res.class}|${res.subclass}|${res.species}|${res.origin}`;
 }
 
@@ -45,7 +45,7 @@ function generateResult() {
   const lang = getLang();
   const pool = DATA[lang] || DATA.es;
 
-  // Reintentos para evitar repetir EXACTAMENTE el mismo combo seguido
+
   for (let attempt = 0; attempt < 12; attempt++) {
     const clsObj = pick(pool.classes);
     const classId = clsObj.id;
@@ -71,7 +71,7 @@ function generateResult() {
     }
   }
 
-  // Si por lo que sea no puede (listas pequeñas), devolvemos lo último
+ 
   const fallback = {
     class: "—", subclass: "—", origin: "—", species: "—",
     traits: "—", ideals: "—", bonds: "—", flaws: "—"
@@ -112,10 +112,10 @@ function renderResult(res) {
   }
 
 
-   // Texto para copiar (etiquetado)
+
   lastCopyText = lines.join("\n");
 
-  // allBox: 1 línea compacta + (modo full) roleo en líneas separadas
+
   const modeNow = getMode();
 
   const compactLine = [
@@ -128,7 +128,7 @@ function renderResult(res) {
   let html = `<div class="allbox-main">${escapeHtml(compactLine)}</div>`;
 
   if (modeNow === "full") {
-    // Etiquetas localizadas usando SECTIONS
+
     const labelTraits = sectionLabel(lang, SECTIONS.find(s => s.key === "traits"));
     const labelIdeals = sectionLabel(lang, SECTIONS.find(s => s.key === "ideals"));
     const labelBonds  = sectionLabel(lang, SECTIONS.find(s => s.key === "bonds"));
@@ -163,10 +163,10 @@ async function rollAnimation() {
   const pool = DATA[lang] || DATA.es;
   const mode = getMode();
 
-  const ticks = 12;      // “frames”
-  const tickMs = 50;     // velocidad
+  const ticks = 12;    
+  const tickMs = 50;     
   for (let i = 0; i < ticks; i++) {
-    // Resultado “fake” rápido (no aplica anti-repetición, es solo visual)
+
     const clsObj = pick(pool.classes);
     const classId = clsObj.id;
     const subclassList = pool.subclassesByClass[classId] || [];
@@ -181,13 +181,13 @@ async function rollAnimation() {
       flaws: pool.flaws?.length ? pick(pool.flaws) : "—",
     };
 
-    // Pintamos con tu render normal, pero sin cambiar lastSignature:
+  
     renderResult(fake);
 
     await sleep(tickMs);
   }
 
-  // Resultado final “real” con anti-repetición
+
   const res = generateResult();
   renderResult(res);
 
