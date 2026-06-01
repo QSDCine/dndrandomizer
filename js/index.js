@@ -21,7 +21,7 @@ function render() {
   document.documentElement.lang = lang;
   applyThemeToBody();
 
-  // Textos UI
+
   el("btnInstructions").textContent = t(lang, "btnInstructions");
   el("btnGo").textContent = t(lang, "goToGame");
 el("btnTheme").textContent = theme === "dark" ? "🌙" : "☀️";
@@ -35,13 +35,13 @@ el("btnLists").textContent = t(lang, "btnLists");
   el("modeSimpleText").textContent = t(lang, "modeSimple");
   el("modeFullText").textContent = t(lang, "modeFull");
 
-  // Estado seleccionado
+ 
   el("modeSimple").checked = mode === "simple";
   el("modeFull").checked = mode === "full";
 
   setActiveLangButton(lang);
 
-  // Dialog
+
   el("insTitle").textContent = t(lang, "instructionsTitle");
   el("insBody").textContent = t(lang, "instructionsBody");
 }
@@ -63,7 +63,7 @@ el("btnLangEn").addEventListener("click", () => {
 document.querySelectorAll('input[name="mode"]').forEach((input) => {
   input.addEventListener("change", (e) => {
     setMode(e.target.value);
-    // no hace falta rerender, pero lo dejamos por si cambias textos/ayuda
+
     render();
   });
 });
@@ -82,7 +82,7 @@ el("btnGo").addEventListener("click", () => {
 
 render();
 
-// SW register 
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js");
 }
