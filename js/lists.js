@@ -18,7 +18,7 @@ function renderSubclasses(lang) {
   const data = DATA[lang];
   const classId = el("selectClass").value;
 
-  // Si no hay clase seleccionada, no mostramos nada
+
   if (!classId) {
     fillUl("listSubclasses", []);
     return;
@@ -35,11 +35,11 @@ function render() {
   document.documentElement.lang = lang;
   applyThemeToBody();
 
-  // Header
+
   el("title").textContent = t(lang, "titleLists");
   el("btnBack").textContent = t(lang, "btnBack");
 
-  // Section titles
+
   el("secClasses").textContent = t(lang, "secClasses");
   el("secSubclasses").textContent = t(lang, "secSubclasses");
   el("lblChooseClass").textContent = t(lang, "chooseClass");
@@ -50,19 +50,19 @@ function render() {
   el("secBonds").textContent = t(lang, "secBonds");
   el("secFlaws").textContent = t(lang, "secFlaws");
 
-  // Classes list
+
   const classes = data.classes || [];
   fillUl("listClasses", classes.map(c => c.name));
 
-  // Select for subclasses (UI-only placeholder)
+
   const select = el("selectClass");
   select.innerHTML = "";
 
   const placeholder = document.createElement("option");
   placeholder.value = "";
-  placeholder.textContent = t(lang, "chooseClass"); // "Elige una clase" / "Choose a class"
+  placeholder.textContent = t(lang, "chooseClass"); 
   placeholder.selected = true;
-  placeholder.disabled = true; // opcional: evita que lo “elijan” una vez cambiaron
+  placeholder.disabled = true; 
   select.appendChild(placeholder);
 
   for (const c of classes) {
@@ -72,10 +72,10 @@ function render() {
     select.appendChild(opt);
   }
 
-  // Importante: al entrar, no mostramos subclases hasta elegir clase
+
   renderSubclasses(lang);
 
-  // Other lists
+
   fillUl("listOrigins", data.origin || []);
   fillUl("listSpecies", data.species || []);
   fillUl("listTraits", data.traits || []);
@@ -96,7 +96,7 @@ render();
 
 window.addEventListener("pageshow", () => render());
 
-// SW register (igual que index)
+
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js");
 }
