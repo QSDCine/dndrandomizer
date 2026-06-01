@@ -21,7 +21,7 @@ export function applyThemeToBody() {
   document.body.classList.toggle("light", theme === "light");
 }
 
-export const DEFAULT_MODE = "simple"; // o "full" si prefieres
+export const DEFAULT_MODE = "simple"; 
 
 export function getMode() {
   return localStorage.getItem("mode") || DEFAULT_MODE;
